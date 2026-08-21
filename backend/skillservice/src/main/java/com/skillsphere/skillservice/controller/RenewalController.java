@@ -11,18 +11,12 @@ import java.util.UUID;
 public class RenewalController {
     private final RenewalService renewalService;
     @PostMapping("/{certificationId}")
-    public RenewalDTO request(
-            @PathVariable UUID certificationId,
-            @RequestParam String requestedBy) {
-        return renewalService.requestRenewal(
-                certificationId, requestedBy);
+    public RenewalDTO request(@PathVariable UUID certificationId, @RequestParam String requestedBy) {
+        return renewalService.requestRenewal(certificationId, requestedBy);
     }
-    @PutMapping("/{renewalId}/approve")
-    public RenewalDTO approve(
-            @PathVariable UUID renewalId,
-            @RequestParam LocalDate newExpiry,
-            @RequestParam String approvedBy) {
-        return renewalService.approveRenewal(
-                renewalId, newExpiry, approvedBy);
+    @PutMapping("/{renewalId}/approve") public RenewalDTO approve(@PathVariable UUID renewalId,
+                                                                  @RequestParam LocalDate newExpiry,
+                                                                     @RequestParam String approvedBy) {
+        return renewalService.approveRenewal(renewalId, newExpiry, approvedBy);
     }
 }
